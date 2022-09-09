@@ -38,3 +38,35 @@ const links = document.querySelectorAll('.titles a');
 for (let link of links) {
     link.addEventListener('click', titleClickHandler);
 }
+
+/*GERERING TITLES LIST*/
+
+const optArticleSelector = '.post',
+    optTitleSelector = '.post-title',
+    optTitleListSelector = '.titles';
+
+function generateTitleLinks(customSelector = "") {
+    //nie wiem skąd argument custom...//
+
+    /* remove contents of titleList */
+    const titleList = document.querySelector(optTitleListSelector);
+    console.log('titlelist to', titleList);
+    titleList.innerHTML = '';
+
+    /* for each article */
+    const articles = document.querySelectorAll(optArticleSelector + customSelector);
+    let html = '';
+    for (let article of articles);
+
+    /* get the article id */
+    const articleId = article.getAttribute('id');
+
+    /* find the title element */
+
+    /* get the title from the title element */
+
+    /* create HTML of the link */
+
+    /* insert link into titleList */
+
+}
