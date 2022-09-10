@@ -85,6 +85,6 @@ function generateTitleLinks(customSelector = "") {
     /* insert link into titleList */
 
     const abc = document.getElementsByClassName('.titles');
-    abc.insertAdjacentHTML('beforbegin', linkHTML);
+    abc.insertAdjacentHTML('beforebegin', linkHTML);
 
 }
