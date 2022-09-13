@@ -1,5 +1,6 @@
 'use strict';
 
+
 function titleClickHandler(event) {
     event.preventDefault();
     const clickedElement = this;
@@ -51,25 +52,22 @@ const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles';
 
-function generateTitleLinks(customSelector = "") {
-    //nie wiem skąd argument custom...//
+console.log('przed generateTitleLinks')
 
+function generateTitleLinks() {
+    console.log('funkcja' + generateTitleLinks + 'została wyaołana')
     /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
     console.log('titlelist to', titleList);
     titleList.innerHTML = '';
-    /*co robi innerHTML?*/
 
     /* for each article */
-    const articles = document.querySelectorAll(optArticleSelector + customSelector);
+    const articles = document.querySelectorAll(optArticleSelector);
     let html = '';
-    /*co robi powyższa linia?*/
     for (let article of articles);
-    /*dlaczego zmienna article jest lekko szara w kodzie? Dlaczego nie przypisaliśmy jej wartości?*/
 
     /* get the article id */
     const articleId = article.getAttribute('id');
-    /*tutaj article już nie jest szara, dlaczego? Czym jest? Skąd się tego dowiedzieć?*/
 
     /* find the title element */
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
@@ -78,13 +76,12 @@ function generateTitleLinks(customSelector = "") {
 
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    console.log('stała linkHTML to ', linkHTML);
-    console.log('koniec');
     /*dlaczego nie mogę podejrzeć consol.logiem......???*/
 
     /* insert link into titleList */
 
     const abc = document.getElementsByClassName('.titles');
-    abc.insertAdjacentHTML('beforebegin', linkHTML);
-
+    abc.insertAdjacentHTML('afterbegin', '<strong>abc</strong>');
+    console.log('koniec funkcji generateTitleLinks')
 }
+console.log('po generateTitleLinks');
