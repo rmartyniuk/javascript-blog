@@ -49,34 +49,49 @@ for (let link of links) {
 /*GERERING TITLES LIST*/
 
 const optArticleSelector = '.post',
-    optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles';
+    optTitleListSelector = '.titles',
+    optArticleId1 = document.querySelector(#article - 1),
+    optArticleId2 = document.querySelector(#article - 2),
+    optArticleId3 = document.querySelector(#article - 3),
+    optArticleId4 = document.querySelector(#article - 4),
+    optArticleId5 = document.querySelector(#article - 5),
+    optArticleId6 = document.querySelector(#article - 6),
+    optArticleId7 = document.querySelector(#article - 7),
+    optArticleId8 = document.querySelector(#article - 8),
+    optArticleId9 = document.querySelector(#article - 9),
+    optArticleId10 = document.querySelector(#article - 10),
+    optTitleSelector = '.post-title';
 
-console.log('przed generateTitleLinks')
+
+console.log('przed generateTitleLinks');
 
 function generateTitleLinks() {
-    console.log('funkcja' + generateTitleLinks + 'została wyaołana')
+
     /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
-    console.log('titlelist to', titleList);
     titleList.innerHTML = '';
 
     /* for each article */
     const articles = document.querySelectorAll(optArticleSelector);
     let html = '';
-    for (let article of articles);
+    for (let article of articles) {
 
-    /* get the article id */
-    const articleId = article.getAttribute('id');
+        /* get the article id */
+        const articleId = article.getAttribute('id');
 
-    /* find the title element */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+        /* find the title element */
+        const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
-    /* get the title from the title element */
+        /* get the title from the title element */
 
-    /* create HTML of the link */
-    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-    /*dlaczego nie mogę podejrzeć consol.logiem......???*/
+        /* create HTML of the link */
+        const linkHTMLData = {
+            id: articleId,
+            title: articleTitle
+        };
+        const linkHTML =
+    }
+
 
     /* insert link into titleList */
 
