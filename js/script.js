@@ -50,16 +50,6 @@ for (let link of links) {
 
 const optArticleSelector = '.post',
     optTitleListSelector = '.titles',
-    optArticleId1 = document.querySelector(#article - 1),
-    optArticleId2 = document.querySelector(#article - 2),
-    optArticleId3 = document.querySelector(#article - 3),
-    optArticleId4 = document.querySelector(#article - 4),
-    optArticleId5 = document.querySelector(#article - 5),
-    optArticleId6 = document.querySelector(#article - 6),
-    optArticleId7 = document.querySelector(#article - 7),
-    optArticleId8 = document.querySelector(#article - 8),
-    optArticleId9 = document.querySelector(#article - 9),
-    optArticleId10 = document.querySelector(#article - 10),
     optTitleSelector = '.post-title';
 
 
@@ -89,7 +79,6 @@ function generateTitleLinks() {
             id: articleId,
             title: articleTitle
         };
-        const linkHTML =
     }
 
 
