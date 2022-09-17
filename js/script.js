@@ -160,7 +160,7 @@ function tagClickHandler(event) {
 
     /* START LOOP: for each found tag link
     ---dla każdego znalezionego linku tagu */
-    for (tagLink of tagLinkHref) {
+    for (let tagLink of tagLinksHref) {
 
         /* add class active */
         tagLink.classList.add('active')
@@ -172,6 +172,7 @@ function tagClickHandler(event) {
     generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
+tagClickHandler();
 
 
 function addClickListenersToTags() {
