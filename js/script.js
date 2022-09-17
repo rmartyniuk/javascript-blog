@@ -84,16 +84,16 @@ console.log('wywołano generateTitleLinks: ', generateTitleLinks);
 function generateTags() {
     /* find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
-    let html = '';
+
 
     /* START LOOP: for every article: */
     for (let article of articles) {
 
         /* find tags wrapper */
-        article.querySelector(optArticleTagsSelector);
+        const tagsList = article.querySelector(optArticleTagsSelector);
 
         /* make html variable with empty string */
-
+        let html = '';
 
         /* get tags from data-tags attribute */
         const articleTags = article.getAttribute('data-tags');
@@ -104,9 +104,9 @@ function generateTags() {
 
         /* START LOOP: for each tag */
         for (let tag of articleTagsArray) {
-            console.log('tag to:', tag)
+
             /* add generated code to html variable */
-            const linkHTML = '<li><a href="#' + articleTagsArray + '"></a></li>';
+            const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '"</span></a></li>';
             html = html + linkHTML;
             console.log('html tworzy: ', html);
 
@@ -114,7 +114,7 @@ function generateTags() {
         }
 
         /* insert HTML of all the links into the tags wrapper */
-        articles.innerHTML = html;
+        tagsList.innerHTML = html.innerHTML;
 
         /* END LOOP: for every article: */
     }
