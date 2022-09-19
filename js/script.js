@@ -111,6 +111,7 @@ function generateTags() {
             html = html + linkHTML;
             console.log(html);
 
+
             /* END LOOP: for each tag */
         }
 
@@ -142,7 +143,7 @@ function tagClickHandler(event) {
 
     /* find all tag links with class active
     ---znajdź wszystkie linki do tagów z aktywną klasą */
-    const activeTagLinks = document.querySelectorAll('a.active[href^="tag-"]');
+    const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
 
     /* START LOOP: for each active tag link
     ---START LOOP: dla każdego aktywnego linku tagu */
@@ -251,7 +252,7 @@ function authorClickHandler(event) {
 
 
 function addClickListenersToAuthors() {
-    const authorLinks = document.querySelectorAll('a[href^="author-"]');
+    const authorLinks = document.querySelectorAll('a[href^="#author-"]');
 
     for (let author of authorLinks) {
         author.addEventListener('click', authorClickHandler)
