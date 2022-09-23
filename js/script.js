@@ -290,6 +290,23 @@ function generateAuthors() {
 
     authorWrapper.innerHTML = html;
   }
+
+  /*NEW find list of authors in right column*/
+
+
+
+  /*NEW create variable for all links HTML code*/
+
+
+
+  /*NEW generate code of a link and add it to authorsHTML */
+
+
+
+  /*NEW add html from allTagsHTML to authorsList */
+
+
+
 }
 generateAuthors();
 
