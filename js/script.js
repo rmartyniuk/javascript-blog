@@ -80,10 +80,8 @@ function generateTitleLinks(customSelector = '') {
   }
 }
 generateTitleLinks();
-console.log('wywołano generateTitleLinks: ', generateTitleLinks);
 
 
-/*Dodanie tagów do artykułów*/
 function calculateTagsParams(tags) {
   const params = {
     max: 0,
@@ -121,9 +119,6 @@ function calculateTagClass(count, params) {
 
   return optCloudClassCountPrefix + classNumber;
 }
-
-console.log(calculateTagClass);
-
 
 function generateTags() {
   console.log('generateTags');
@@ -187,6 +182,7 @@ function generateTags() {
     /* [NEW] generate code of a link and add it to allTagsHTML */
     const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
     allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + tagLinkHTML + '"><span>' + tag + '(' + allTags[tag] + ')</span></a></li>';
+    console.log('tagLinkHTML', tagLinkHTML);
 
     /* [NEW] END LOOP: for each tag in allTags: */
   }
@@ -262,53 +258,84 @@ function addClickListenersToTags() {
 }
 addClickListenersToTags();
 
+
+function calculateAuthors(authors){
+  const params = {
+    max: 0,
+    min: 999999
+  };
+
+  for (let author in authors){
+    if(authors[author] > params.max){
+      params.max = authors[author];
+  }
+  else (authors[author] < params.min);{params.min = authors[author];}
+}
+return params;
+}
+
+
 function generateAuthors() {
+  
+  /* [NEW] create a new variable allAuthors with an empty object */
+  let authorSideList = {};
 
-  /*stała-wskazująca na kontener*/
+  /*Find all articles*/
   const articles = document.querySelectorAll(optArticleSelector);
+  
+  
 
-
-
-  /*rozp pętli*/
+  /*START LOOP: for every article*/
   for (let article of articles) {
 
-    /*Gdzie mają zostać wpisane wyniki?*/
+    /*find tags wrapper- Gdzie mają zostać wpisane wyniki?*/
     const authorWrapper = article.querySelector(optArticleAuthorSelector);
 
+    /* make html variable with empty string */
     let html = '';
 
-    /*Skąd mają być pobrane informacje o wynikach*/
-    const author = article.getAttribute('data-author');
-    console.log(author);
+    /*get tags from data-tags attribute- Skąd mają być pobrane informacje o wynikach*/
+    const articleAuthor = article.getAttribute('data-author');
 
-
-    /*utworzenie linka*/
-    const linkHTML = '<a href="#author-' + author + '"><span>' + author + '</span></a>';
+    /* add generated code to html variable*/
+  
+    const linkHTML = '<li><a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span></a></li>';
     console.log('author', linkHTML);
 
-    html = html + linkHTML;
+    html = linkHTML;
+
+    if (!authorSideList.hasOwnProperty(articleAuthor)){
+      authorSideList[articleAuthor] = 1;
+    } else{
+      authorSideList[articleAuthor]++;
+    }
 
     authorWrapper.innerHTML = html;
   }
 
-  /*NEW find list of authors in right column*/
+  /* [NEW] find list of authors in right column */
+  const authorList = document.querySelector(optAuthorsListSelector);
+
+  /* [NEW] create variable for all links HTML code */
+  let authorSideListHTML = '';
+
+  /* [NEW] START LOOP: for each author in authorSideList */
 
 
+  console.log('authorsidelist', authorSideList);
 
-  /*NEW create variable for all links HTML code*/
+  const authorCounter = calculateAuthors()
 
-
-
-  /*NEW generate code of a link and add it to authorsHTML */
-
-
-
-  /*NEW add html from allTagsHTML to authorsList */
-
-
-
+  for(let author in authorSideList){
+    authorSideListHTML += '<li><a href="#author-' + author + '"><span>' + author + '(' + authorSideList + ')</span></a></li>';
+  };
+  console.log('authorSideListHTML', authorSideListHTML);
+  
+  authorList.innerHTML = authorSideListHTML;
+  console.log('authorsidelistHTML', authorSideListHTML)
 }
 generateAuthors();
+
 
 
 function authorClickHandler(event) {
@@ -331,6 +358,7 @@ function authorClickHandler(event) {
   const authorLinks = document.querySelectorAll('a[href="' + href + '"]');
 
   for (let authorLink of authorLinks) {
+
     authorLink.classList.add('active');
   }
   generateTitleLinks('[data-author="' + author + '"]');
