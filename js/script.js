@@ -259,22 +259,6 @@ function addClickListenersToTags() {
 addClickListenersToTags();
 
 
-function calculateAuthors(authors){
-  const params = {
-    max: 0,
-    min: 999999
-  };
-
-  for (let author in authors){
-    if(authors[author] > params.max){
-      params.max = authors[author];
-  }
-  else (authors[author] < params.min);{params.min = authors[author];}
-}
-return params;
-}
-
-
 function generateAuthors() {
   
   /* [NEW] create a new variable allAuthors with an empty object */
@@ -324,15 +308,13 @@ function generateAuthors() {
 
   console.log('authorsidelist', authorSideList);
 
-  const authorCounter = calculateAuthors()
-
   for(let author in authorSideList){
     authorSideListHTML += '<li><a href="#author-' + author + '"><span>' + author + '(' + authorSideList + ')</span></a></li>';
-  };
+  }
   console.log('authorSideListHTML', authorSideListHTML);
   
   authorList.innerHTML = authorSideListHTML;
-  console.log('authorsidelistHTML', authorSideListHTML)
+  console.log('authorsidelistHTML', authorSideListHTML);
 }
 generateAuthors();
 
