@@ -258,7 +258,6 @@ function addClickListenersToTags() {
 }
 addClickListenersToTags();
 
-
 function generateAuthors() {
   
   /* [NEW] create a new variable allAuthors with an empty object */
@@ -266,8 +265,6 @@ function generateAuthors() {
 
   /*Find all articles*/
   const articles = document.querySelectorAll(optArticleSelector);
-  
-  
 
   /*START LOOP: for every article*/
   for (let article of articles) {
@@ -280,11 +277,10 @@ function generateAuthors() {
 
     /*get tags from data-tags attribute- Skąd mają być pobrane informacje o wynikach*/
     const articleAuthor = article.getAttribute('data-author');
-
-    /* add generated code to html variable*/
-  
+    
+    /* add generated code to html variable*/  
     const linkHTML = '<li><a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span></a></li>';
-    console.log('author', linkHTML);
+    console.log('linkHTML', linkHTML);
 
     html = linkHTML;
 
@@ -293,23 +289,19 @@ function generateAuthors() {
     } else{
       authorSideList[articleAuthor]++;
     }
-
     authorWrapper.innerHTML = html;
   }
 
   /* [NEW] find list of authors in right column */
   const authorList = document.querySelector(optAuthorsListSelector);
+  console.log('authorsidelist', authorSideList);
 
   /* [NEW] create variable for all links HTML code */
   let authorSideListHTML = '';
 
   /* [NEW] START LOOP: for each author in authorSideList */
-
-
-  console.log('authorsidelist', authorSideList);
-
   for(let author in authorSideList){
-    authorSideListHTML += '<li><a href="#author-' + author + '"><span>' + author + '(' + authorSideList + ')</span></a></li>';
+    authorSideListHTML += '<li><a href="#author-' + author + '"><span>' + author + ' (' + authorSideList[author] + ')</span></a></li>';
   }
   console.log('authorSideListHTML', authorSideListHTML);
   
