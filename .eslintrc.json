@@ -34,3 +34,7 @@
         ]
     }
 }
+
+"globals": {
+    "Handlebars": false
+}
