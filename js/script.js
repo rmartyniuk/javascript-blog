@@ -168,9 +168,11 @@ function generateTags() {
       // const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
       // html = html + linkHTML;
 
-      const tagLinkHTMLData = { id: articleTags, title: tag };
+      const tagLinkHTMLData = { id: tag, title: tag };
       const tagLinkHTML = templates.articleTagsLink(tagLinkHTMLData);
       html = html + tagLinkHTML;
+
+      console.log('123', tagLinkHTML);
 
       /* [NEW] check if this link is NOT already in allTags */
       if (!allTags.hasOwnProperty(tag)) {
